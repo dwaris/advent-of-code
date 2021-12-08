@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import os.path
 import numpy as np
 
-data = np.loadtxt('day08/input.txt',dtype=str,delimiter='\t')
+lines = np.loadtxt('day08/input.txt',dtype=str,delimiter='\t')
 
 result = 0
-for patterns, outputs in [line.split("|") for line in data]:
+
+for patterns, outputs in [line.split("|") for line in lines]:
 	line = {len(pattern): set(pattern) for pattern in patterns.split()}
 
 	num = ''
@@ -21,6 +21,7 @@ for patterns, outputs in [line.split("|") for line in data]:
 			case 6,4,_: num += '9'
 			case 6,3,1: num += '6'
 			case 6,3,2: num += '0'
+	
 	result += int(num)
 
 print(f"Result: {result}")
