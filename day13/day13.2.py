@@ -11,6 +11,7 @@ for axis,value in zip(folds[:,0],folds[:,1].astype(int)):
 			if points[point][0] > value:
 				new_value = points[point][0] - 2 *(points[point][0] - value)
 				points[point] = np.array([new_value,points[point][1]])
+
 		elif axis == 'y':
 			if points[point][1] > value:
 				new_value = points[point][1] - 2 *(points[point][1] - value)
@@ -18,6 +19,7 @@ for axis,value in zip(folds[:,0],folds[:,1].astype(int)):
 
 
 picture = np.zeros([6,np.max(points)+1])
+
 for p in points:
 	picture[p[1],p[0]] += 1
 
