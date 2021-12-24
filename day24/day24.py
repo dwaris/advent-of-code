@@ -43,12 +43,14 @@ for i, inst in enumerate(alu):
 	registers[a] = c
 
 solver.add(registers['z'] == 0)
+result = ""
 
 for f in (solver.maximize, solver.minimize):
 	solver.push()
 	f(sum((10 ** i) * d for i, d in enumerate(digits[::-1])))
-	print(solver.check())
+	solver.check()
 	m = solver.model()
-	print(''.join([str(m[d]) for d in digits]))
+	result += (''.join([str(m[d]) for d in digits]))
 	solver.pop()
 	
+print(f"Result 1: {result[0:len(result)//2]}\nResult 2: {result[len(result)//2:]}")
